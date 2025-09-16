@@ -840,6 +840,7 @@ public class SamlClient {
     byte[] requestBytes;
     if (binding == SamlClient.SamlIdpBinding.Redirect) {
       try {
+        String requestStr = stringWriter.toString();
         //For a Redirect we compress (deflate) the bytes before we Base64 them
         InputStream input = new ByteArrayInputStream(requestStr.getBytes("UTF-8"));
         ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -858,7 +859,7 @@ public class SamlClient {
       }
     } else {
       //For a POST we just Base64 the bytes
-      requestBytes = requestStr.getBytes(StandardCharsets.UTF_8);
+      requestBytes = stringWriter.toString().getBytes(StandardCharsets.UTF_8);
     }
     return Base64.encodeBase64String(requestBytes);
   }
@@ -1069,14 +1070,14 @@ public class SamlClient {
       //4.1.2-datb-2 A275378 If encrypted assertions use RetrievalMethod to refer to an EncryptedKey using a URI within the
       //document then SimpleRetrievalMethodEncryptedKeyResolver is needed to resolve these.
       List<EncryptedKeyResolver> ekResolverList = new ArrayList<>();
-      ekResolverList.add( new InlineEncryptedKeyResolver() );
-      ekResolverList.add( new SimpleRetrievalMethodEncryptedKeyResolver() );  
+      ekResolverList.add(new InlineEncryptedKeyResolver());
+      ekResolverList.add(new SimpleRetrievalMethodEncryptedKeyResolver());
 
       Decrypter decrypter =
           new Decrypter(
               null,
               new ChainingKeyInfoCredentialResolver(resolverChain),
-              new ChainingEncryptedKeyResolver( ekResolverList ) );
+              new ChainingEncryptedKeyResolver(ekResolverList));
 
       decrypter.setRootInNewDocument(true);
 

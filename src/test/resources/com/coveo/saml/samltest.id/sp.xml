@@ -1,0 +1,128 @@
+
+<!-- This is the metadata for the JD Test SP, named by entityID --> 
+
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" ID="JDtestSP" entityID="https://local.datb.net:8443/KWeb?identity=jdtest1">
+
+<!-- This list enumerates the cryptographic algorithms acceptable to this SP -->
+  <md:Extensions xmlns:alg="urn:oasis:names:tc:SAML:metadata:algsupport">
+    <alg:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/>
+    <alg:DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#sha384"/>
+    <alg:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+    <alg:DigestMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#sha224"/>
+    <alg:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+    <alg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512"/>
+    <alg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384"/>
+    <alg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256"/>
+    <alg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha224"/>
+    <alg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"/>
+    <alg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha384"/>
+    <alg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+    <alg:SigningMethod Algorithm="http://www.w3.org/2009/xmldsig11#dsa-sha256"/>
+    <alg:SigningMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha1"/>
+    <alg:SigningMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+    <alg:SigningMethod Algorithm="http://www.w3.org/2000/09/xmldsig#dsa-sha1"/>
+  </md:Extensions>
+
+  <md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+    <md:Extensions>
+
+<!-- The location to redirect users to for invocation of an AuthnRequest -->
+      <init:RequestInitiator xmlns:init="urn:oasis:names:tc:SAML:profiles:SSO:request-init" Binding="urn:oasis:names:tc:SAML:profiles:SSO:request-init" Location="https://local.datb.net:8443/KWeb?samlLogin"/>
+
+<!-- Display information about this SP that the IdP can present to users -->
+      <mdui:UIInfo xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui">
+          <mdui:DisplayName xml:lang="en">JD Test SP</mdui:DisplayName>
+          <mdui:Description xml:lang="en">A free and basic SP for testing SAML deployments</mdui:Description>
+          <mdui:Logo height="90" width="225">https://samltest.id/saml/logo.png</mdui:Logo>
+       </mdui:UIInfo>
+
+    </md:Extensions>
+<!-- A certificate containing the public key for verification of signed messages from this SP.  
+This is rarely used because the SP sends few signed messages, but using a separate key is better 
+security hygiene.  In practice, many SP's use only one key for both encryption and signature.
+Most SAML implementations don't rely on the rest of the certificate's contents. -->
+    <md:KeyDescriptor use="signing">
+      <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        <ds:X509Data>
+          <ds:X509Certificate>
+MIIDujCCAqKgAwIBAgIJAJHfaVlpD2MLMA0GCSqGSIb3DQEBCwUAMHIxCzAJBgNV
+BAYTAkZSMQowCAYDVQQIDAEtMQowCAYDVQQHDAEtMQowCAYDVQQKDAEtMQowCAYD
+VQQLDAEtMRQwEgYDVQQDDAtzYW1sLWNsaWVudDEdMBsGCSqGSIb3DQEJARYObm9A
+YWRkcmVzcy5jb20wHhcNMTgwOTIwMTMyOTM1WhcNMTkwOTIwMTMyOTM1WjByMQsw
+CQYDVQQGEwJGUjEKMAgGA1UECAwBLTEKMAgGA1UEBwwBLTEKMAgGA1UECgwBLTEK
+MAgGA1UECwwBLTEUMBIGA1UEAwwLc2FtbC1jbGllbnQxHTAbBgkqhkiG9w0BCQEW
+Dm5vQGFkZHJlc3MuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA
+r4KWtZ++3+wF+P5vHBus58gPhM5z2eH3bCmYYMtz/sdssjzYs7gvDP4fCaQy2mma
+ntMzJaYdLA08SON49yy7lcRK40E4MQ+DvksPS64bMwjRvLyN96ANKxJnoUejL6uI
+86yGwH09ad/J/2GC0kmGgEctxZ60QHVqK5Bn4Yv/RoXC5jskbEIrbACJ8rwa7/8z
+1rM8r1tsm7jy/8NqsHvFQ0IfB8N27zqdrC77XsaYZWHJzBbyaSC0AnAOOXXMOdoL
+YpsaeXw5nZ3knwKY5PyEODuCv/5rOoJkpqdN5zX06yZ7uubQ1+o3cHyV/UErZmk7
+oPLvMezc/lwtUmHBvY0LMQIDAQABo1MwUTAdBgNVHQ4EFgQUoU2D/5UEJ1CiB8eH
+OOb7p0OUSJkwHwYDVR0jBBgwFoAUoU2D/5UEJ1CiB8eHOOb7p0OUSJkwDwYDVR0T
+AQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAE6c4YayrDUcXNcK20CUD0xSe
+5Pf75gKBSf7s8C2EEk4kQ4W1yc5dG7pnCGhKNhOpeYWgTEHnFyb1311wDuhW2+a6
+uWLLkOr2R2qALPhPlMQVXKzA3smp8TydqFat1TTylrTo+lBmIWXBB9LczuqPpYKh
+JOcJpDQW7J/asKpHnh+Jd7eMGs8PzI1sDoXEb3JuzMC1OQW/o750+IybAC3YH4jH
+0uKlcKvIfC3puO99+Et3cZqgH0CMmsdy1KA8intCRcvIutm6upjZs4IFS+jC2mMn
+EXZmiWfP5l4t8OPE0g5jdSuomDHAK63LNiCps4GVRXMtihRqN5j1+RGetfSUQA==
+</ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </md:KeyDescriptor>
+<!-- A certificate containing the public key for encryption of messages sent to the JD Test SP.
+This key is crucial for securing assertions from IdP's.  Multiple encryption keys can be listed
+and this will often be necessary for key rollovers. --> 
+    <md:KeyDescriptor use="encryption">
+      <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        <ds:X509Data>
+          <ds:X509Certificate>
+MIIDujCCAqKgAwIBAgIJAJHfaVlpD2MLMA0GCSqGSIb3DQEBCwUAMHIxCzAJBgNV
+BAYTAkZSMQowCAYDVQQIDAEtMQowCAYDVQQHDAEtMQowCAYDVQQKDAEtMQowCAYD
+VQQLDAEtMRQwEgYDVQQDDAtzYW1sLWNsaWVudDEdMBsGCSqGSIb3DQEJARYObm9A
+YWRkcmVzcy5jb20wHhcNMTgwOTIwMTMyOTM1WhcNMTkwOTIwMTMyOTM1WjByMQsw
+CQYDVQQGEwJGUjEKMAgGA1UECAwBLTEKMAgGA1UEBwwBLTEKMAgGA1UECgwBLTEK
+MAgGA1UECwwBLTEUMBIGA1UEAwwLc2FtbC1jbGllbnQxHTAbBgkqhkiG9w0BCQEW
+Dm5vQGFkZHJlc3MuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA
+r4KWtZ++3+wF+P5vHBus58gPhM5z2eH3bCmYYMtz/sdssjzYs7gvDP4fCaQy2mma
+ntMzJaYdLA08SON49yy7lcRK40E4MQ+DvksPS64bMwjRvLyN96ANKxJnoUejL6uI
+86yGwH09ad/J/2GC0kmGgEctxZ60QHVqK5Bn4Yv/RoXC5jskbEIrbACJ8rwa7/8z
+1rM8r1tsm7jy/8NqsHvFQ0IfB8N27zqdrC77XsaYZWHJzBbyaSC0AnAOOXXMOdoL
+YpsaeXw5nZ3knwKY5PyEODuCv/5rOoJkpqdN5zX06yZ7uubQ1+o3cHyV/UErZmk7
+oPLvMezc/lwtUmHBvY0LMQIDAQABo1MwUTAdBgNVHQ4EFgQUoU2D/5UEJ1CiB8eH
+OOb7p0OUSJkwHwYDVR0jBBgwFoAUoU2D/5UEJ1CiB8eHOOb7p0OUSJkwDwYDVR0T
+AQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAE6c4YayrDUcXNcK20CUD0xSe
+5Pf75gKBSf7s8C2EEk4kQ4W1yc5dG7pnCGhKNhOpeYWgTEHnFyb1311wDuhW2+a6
+uWLLkOr2R2qALPhPlMQVXKzA3smp8TydqFat1TTylrTo+lBmIWXBB9LczuqPpYKh
+JOcJpDQW7J/asKpHnh+Jd7eMGs8PzI1sDoXEb3JuzMC1OQW/o750+IybAC3YH4jH
+0uKlcKvIfC3puO99+Et3cZqgH0CMmsdy1KA8intCRcvIutm6upjZs4IFS+jC2mMn
+EXZmiWfP5l4t8OPE0g5jdSuomDHAK63LNiCps4GVRXMtihRqN5j1+RGetfSUQA==
+</ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+      <md:EncryptionMethod Algorithm="http://www.w3.org/2009/xmlenc11#aes128-gcm"/>
+      <md:EncryptionMethod Algorithm="http://www.w3.org/2009/xmlenc11#aes192-gcm"/>
+      <md:EncryptionMethod Algorithm="http://www.w3.org/2009/xmlenc11#aes256-gcm"/>
+      <md:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes128-cbc"/>
+      <md:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes192-cbc"/>
+      <md:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc"/>
+      <md:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc"/>
+      <md:EncryptionMethod Algorithm="http://www.w3.org/2009/xmlenc11#rsa-oaep"/>
+      <md:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#rsa-oaep-mgf1p"/>
+    </md:KeyDescriptor>
+
+<!-- These endpoints tell IdP's where to send messages, either directly or via
+a browser redirect.  The locations must match the address of the SP as seen from the outside
+world if this host is behind a reverse proxy. -->
+    <md:ArtifactResolutionService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://local.datb.net:8443/KWeb?Artifact/SOAP" index="1"/>
+    <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://local.datb.net:8443/KWeb?SLO/SOAP"/>
+    <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://local.datb.net:8443/KWeb?SLO/Redirect"/>
+    <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://local.datb.net:8443/KWeb?/SLO/POST"/>
+    <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact" Location="https://local.datb.net:8443/KWeb?/SLO/Artifact"/>
+<!-- The primary endpoint to which SAML assertions will be delivered. -->
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://local.datb.net:8443/KWeb?acs" index="1"/>
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign" Location="https://local.datb.net:8443/KWeb?POST-SimpleSign" index="2"/>
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact" Location="https://local.datb.net:8443/KWeb?acsArtifact" index="3"/>
+    <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:PAOS" Location="https://local.datb.net:8443/KWeb?acsECP" index="4"/>
+  </md:SPSSODescriptor>
+
+</md:EntityDescriptor>
